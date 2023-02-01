@@ -1,5 +1,4 @@
 # Project-Distorted
-# By: Denzil Walrond
 # Last Updated: 02/01/2023
 # Game Description
 # ----------------------------------------------
