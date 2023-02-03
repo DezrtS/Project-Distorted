@@ -9,7 +9,6 @@ public class SwordController : MonoBehaviour
 
     [SerializeField] private GameObject swordPivot;
     //[SerializeField] private GameObject swordHitbox;
-    [SerializeField] private GameObject swordImage;
 
     [SerializeField] float rotationsPerSecond = 1;
     private bool isMoving = false;
@@ -79,17 +78,6 @@ public class SwordController : MonoBehaviour
         if (angleDifference > 0 && !isMoving)
         {
             isMoving = true;
-            if (angleDifference > 20)
-            {
-                if (direction > 0)
-                {
-                    swordImage.transform.localEulerAngles = new Vector3(0, 0, 0);
-                }
-                else if (direction < 0)
-                {
-                    swordImage.transform.localEulerAngles = new Vector3(180, 0, 0);
-                }
-            }
             rig.angularVelocity = angleDifference * direction * rotationsPerSecond;
             StartCoroutine(StopSwing());
         }
