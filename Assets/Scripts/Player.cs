@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    MeleeWeapon meleeWeapon;
+    Weapon weapon;
     private Rigidbody2D rig;
 
     [SerializeField] private float maxSpeed;
@@ -57,6 +57,25 @@ public class Player : Entity
                 rig.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             }
         }
+        if (Input.GetKeyDown(KeyCode.Q) && weapon != null)
+        {
+            weapon.Drop();
+            weapon.SetTarget(null);
+            weapon.OnlyTargetPosition(false);
+            weapon = null;
+        } else if (Input.GetKeyDown(KeyCode.E) && weapon == null)
+        {
+            weapon = GameController.instance.GetClosestWeaponOfStates(new List<WeaponStates>() { WeaponStates.DROPPED }, this);
+            if (weapon != null)
+            {
+                weapon.PickUp(this);
+                weapon.OnlyTargetPosition(true);
+            }
+        } else if (Input.GetKeyDown(KeyCode.R) && weapon == null)
+        {
+            weapon = GameController.instance.SpawnRandomMeleeWeapon(this);
+            weapon.OnlyTargetPosition(true);
+        }
 
         if (rig.velocity.x > drag)
         {
@@ -70,8 +89,10 @@ public class Player : Entity
         {
             rig.AddForce(new Vector2(-rig.velocity.x, 0), ForceMode2D.Impulse);
         }
-
-        meleeWeapon.SetTargetedPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        if (weapon != null)
+        {
+            weapon.SetTargetedPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }
     }
 
 
@@ -86,7 +107,7 @@ public class Player : Entity
     {
         if (collision.gameObject.layer == groundLayer)
         {
-            Debug.Log("Collided");
+            StopAllCoroutines();
             isGrounded = true;
             canJump = true;
         }
@@ -107,7 +128,7 @@ public class Player : Entity
     public void SetupEntity()
     {
         base.SetupEntity(EntityTypes.PLAYER, 100, 0);
-        meleeWeapon = GameController.instance.SpawnRandomMeleeWeapon(this);
-        meleeWeapon.OnlyTargetPosition(true);
+        //weapon = GameController.instance.SpawnRandomMeleeWeapon(this);
+        //weapon.OnlyTargetPosition(true);
     }
 }

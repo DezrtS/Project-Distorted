@@ -17,6 +17,6 @@ MonoBehaviour:
   weaponClass: 0
   damage: 10
   knockback: 5
-  speed: 40
+  speed: 20
   canBlock: 1
   canParry: 1

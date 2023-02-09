@@ -5,7 +5,9 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
     [SerializeField] private ItemManager itemManager;
+    [SerializeField] private GameObject keybindsUI;
     [SerializeField] private List<Entity> entities = new List<Entity>();
+    [SerializeField] private List<Weapon> weapons = new List<Weapon> ();
 
     private void Awake()
     {
@@ -27,9 +29,13 @@ public class GameController : MonoBehaviour
             Time.timeScale = Mathf.Max(0.1f, Time.timeScale - 0.1f);
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.T))
         {
             SpawnEnemy(Vector3.zero);
+        }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            keybindsUI.SetActive(!keybindsUI.activeInHierarchy);
         }
     }
 
@@ -46,6 +52,14 @@ public class GameController : MonoBehaviour
         if (!entities.Contains(entity))
         {
             entities.Add(entity);
+        }
+    }
+
+    public void AddWeaponToWorld(Weapon weapon)
+    {
+        if (!weapons.Contains(weapon))
+        {
+            weapons.Add(weapon);
         }
     }
 
@@ -100,5 +114,25 @@ public class GameController : MonoBehaviour
             }
         }
         return closestEntity;
+    }
+
+    public Weapon GetClosestWeaponOfStates(List<WeaponStates> states, Entity originalEntity)
+    {
+        Vector3 position = originalEntity.transform.position;
+        Weapon closestWeapon = null;
+        float distance = int.MaxValue;
+        foreach (Weapon weapon in weapons)
+        {
+            if (states.Contains(weapon.GetWeaponState()))
+            {
+                float entityDistance = (weapon.transform.position - position).magnitude;
+                if (entityDistance < distance)
+                {
+                    distance = entityDistance;
+                    closestWeapon = weapon;
+                }
+            }
+        }
+        return closestWeapon;
     }
 }
