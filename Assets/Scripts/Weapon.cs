@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public enum WeaponClasses
 {
@@ -40,7 +41,12 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        
+        Aim();
+    }
+
+    public virtual void Aim()
+    {
+        return;
     }
 
     public void Drop()

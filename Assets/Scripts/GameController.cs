@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
         if (type.weaponClass == WeaponClasses.SWORD)
         {
             weaponGameObject = Instantiate(itemManager.basicSword, parent.transform.position, Quaternion.identity, parent.transform);
-            weaponGameObject.GetComponent<Sword>().SetUpWeapon(type, weaponGameObject);
+            weaponGameObject.GetComponent<MeleeWeapon>().SetUpWeapon(type, weaponGameObject);
         } else
         {
 
@@ -86,7 +86,7 @@ public class GameController : MonoBehaviour
         if (type.weaponClass == WeaponClasses.SWORD)
         {
             weaponGameObject = Instantiate(itemManager.basicSword, parent.transform.position, Quaternion.identity, parent.transform);
-            weaponGameObject.GetComponent<Sword>().SetUpWeapon(type, weaponGameObject);
+            weaponGameObject.GetComponent<MeleeWeapon>().SetUpWeapon(type, weaponGameObject);
             weapon = weaponGameObject.GetComponent<MeleeWeapon>();
         }
         else

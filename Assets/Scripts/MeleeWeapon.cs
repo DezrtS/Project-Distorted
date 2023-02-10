@@ -22,38 +22,39 @@ public class MeleeWeapon : Weapon
         rig = GetComponentInParent<Rigidbody2D>();
         rig.centerOfMass = Vector2.zero;
         meleeWeaponPivot = gameObject;
+        
     }
 
-    private void Update()
+    public override void Aim()
     {
         if (HasTargetedPosition())
         {
             Vector3 targetPosition = GetTargetedPosition();
-            float rotationOfMouse = Mathf.Atan2((rig.transform.position.y - targetPosition.y), (rig.transform.position.x - targetPosition.x)) * Mathf.Rad2Deg + 180;
+            float rotationTowardsTarget = Mathf.Atan2((rig.transform.position.y - targetPosition.y), (rig.transform.position.x - targetPosition.x)) * Mathf.Rad2Deg + 180;
 
             float rotationOfHand = meleeWeaponPivot.transform.rotation.eulerAngles.z;
 
             float angleDifference = 0;
             int direction = 1;
 
-            if (rotationOfHand < rotationOfMouse && 360 - rotationOfMouse + rotationOfHand < rotationOfMouse - rotationOfHand)
+            if (rotationOfHand < rotationTowardsTarget && 360 - rotationTowardsTarget + rotationOfHand < rotationTowardsTarget - rotationOfHand)
             {
-                angleDifference = 360 - rotationOfMouse + rotationOfHand;
+                angleDifference = 360 - rotationTowardsTarget + rotationOfHand;
                 direction = -1;
             }
-            else if (rotationOfHand > rotationOfMouse && 360 - rotationOfHand + rotationOfMouse < rotationOfHand - rotationOfMouse)
+            else if (rotationOfHand > rotationTowardsTarget && 360 - rotationOfHand + rotationTowardsTarget < rotationOfHand - rotationTowardsTarget)
             {
-                angleDifference = 360 - rotationOfHand + rotationOfMouse;
+                angleDifference = 360 - rotationOfHand + rotationTowardsTarget;
                 direction = 1;
             }
-            else if (rotationOfHand > rotationOfMouse)
+            else if (rotationOfHand > rotationTowardsTarget)
             {
-                angleDifference = rotationOfHand - rotationOfMouse;
+                angleDifference = rotationOfHand - rotationTowardsTarget;
                 direction = -1;
             }
-            else if (rotationOfHand < rotationOfMouse)
+            else if (rotationOfHand < rotationTowardsTarget)
             {
-                angleDifference = rotationOfMouse - rotationOfHand;
+                angleDifference = rotationTowardsTarget - rotationOfHand;
                 direction = 1;
             }
 

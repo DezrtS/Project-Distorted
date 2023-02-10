@@ -17,8 +17,6 @@ public class Entity : MonoBehaviour
     [Range(0, 1)]
     private float damageReduction;
 
-    private bool isSetup = false;
-
     public void SetupEntity(EntityTypes entityType, float maxHealth, float damageReduction)
     {
         this.entityType = entityType;
@@ -30,13 +28,7 @@ public class Entity : MonoBehaviour
 
     void Update()
     {
-        if (!isSetup)
-        {
-            Debug.LogWarning("Warning, an Entity has not yet been set up");
-        } else
-        {
-
-        }
+        
     }
 
     public EntityTypes GetEntityType()
@@ -57,11 +49,6 @@ public class Entity : MonoBehaviour
     public float GetDamageReduction()
     {
         return damageReduction;
-    }
-
-    public bool IsSetup()
-    {
-        return isSetup;
     }
 
     public void SetDamageReduction(float damageReduction)

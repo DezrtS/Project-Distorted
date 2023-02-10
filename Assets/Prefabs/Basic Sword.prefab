@@ -204,7 +204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5389659046202913435}
-  - component: {fileID: 8260876550354550597}
+  - component: {fileID: 5805729401610125814}
   m_Layer: 8
   m_Name: Basic Sword
   m_TagString: Untagged
@@ -229,7 +229,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8260876550354550597
+--- !u!114 &5805729401610125814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,6 +238,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5389659046202913432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc3a9ff5801dfb145a8c83d551755ec2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1175f0a47a62be84a9e0c4bdf78fdd46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

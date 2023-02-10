@@ -12,7 +12,7 @@ public class ItemManager : MonoBehaviour
 
     public List<EnemyType> enemyTypes = new List<EnemyType>();
     public List<MeleeWeaponType> meleeWeaponTypes = new List<MeleeWeaponType>();
-    public List<RangeWeaponType> rangeWeaponTypes = new List<RangeWeaponType>();
+    public List<RangedWeaponType> rangeWeaponTypes = new List<RangedWeaponType>();
 
 
 }
