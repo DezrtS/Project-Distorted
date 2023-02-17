@@ -14,7 +14,6 @@ public class Player : Entity
 
     [SerializeField] private float drag;
 
-    [SerializeField] private int groundLayer;
     private bool isGrounded = false;
     private bool canJump = true;
 
@@ -105,7 +104,16 @@ public class Player : Entity
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == groundLayer)
+        if (weapon != null)
+        {
+            if (collision.otherCollider.transform.parent.gameObject == weapon.gameObject)
+            {
+                Debug.Log(collision.otherCollider.transform.parent.gameObject.name);
+                weapon.WeaponHit(collision);
+            }
+        }
+
+        if (collision.gameObject.tag == "Ground")
         {
             StopAllCoroutines();
             isGrounded = true;
@@ -115,7 +123,7 @@ public class Player : Entity
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == groundLayer)
+        if (collision.gameObject.tag == "Ground")
         {
             isGrounded = false;
             if (canJump)

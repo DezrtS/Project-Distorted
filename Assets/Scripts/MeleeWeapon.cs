@@ -14,6 +14,7 @@ public class MeleeWeapon : Weapon
     private bool canParry;
 
     private bool isMoving;
+    private bool isParrying;
 
 
 
@@ -100,5 +101,35 @@ public class MeleeWeapon : Weapon
         yield return new WaitForSeconds(1 / speed);
         isMoving = false;
         rig.angularVelocity = 0;
+    }
+
+    IEnumerator DisableSwing()
+    {
+        isMoving = true;
+        isParrying = true;
+        rig.angularVelocity = 720;
+        yield return new WaitForSeconds(0.25f);
+        isMoving = false;
+        isParrying = false;
+        rig.angularVelocity = 0;
+    }
+
+    public void Parry()
+    {
+        StopAllCoroutines();
+        StartCoroutine(DisableSwing());
+    }
+
+    public override void WeaponHit(Collision2D collision)
+    {
+        if (collision.collider.gameObject.tag == "Blade" && collision.otherCollider.gameObject.tag == "Blade")
+        {
+            //collision.collider.transform.parent.GetComponent<MeleeWeapon>().Parry();
+            //Parry();
+        } else if (isParrying)
+        {
+            StopAllCoroutines();
+            isMoving = false;
+        }
     }
 }

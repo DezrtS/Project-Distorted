@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5389659045380170896}
   m_Layer: 8
   m_Name: Sword Hitbox
-  m_TagString: Untagged
+  m_TagString: Blade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 5389659045630762864}
   m_Layer: 8
   m_Name: Pixel Sword
-  m_TagString: Untagged
+  m_TagString: Visualizer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 5805729401610125814}
   m_Layer: 8
   m_Name: Basic Sword
-  m_TagString: Untagged
+  m_TagString: Blade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,3 +241,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1175f0a47a62be84a9e0c4bdf78fdd46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponState: 0

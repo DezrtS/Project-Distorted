@@ -26,7 +26,7 @@ public enum WeaponStates
 public class Weapon : MonoBehaviour
 {
     private WeaponClasses weaponClass;
-    private WeaponStates weaponState;
+    [SerializeField] private WeaponStates weaponState;
     private float damage;
     private float knockback;
 
@@ -128,5 +128,10 @@ public class Weapon : MonoBehaviour
         this.damage = damage;
         this.knockback = knockback;
         GameController.instance.AddWeaponToWorld(this);
+    }
+
+    public virtual void WeaponHit(Collision2D collision)
+    {
+
     }
 }

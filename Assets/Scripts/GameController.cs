@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController instance;
+    public static GameController instance { get; private set; }
+
     [SerializeField] private ItemManager itemManager;
     [SerializeField] private GameObject keybindsUI;
     [SerializeField] private List<Entity> entities = new List<Entity>();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameSettings : MonoBehaviour
 {
-    public static GameSettings instance;
+    public static GameSettings instance { get; private set; }
     [SerializeField] private float pixelsPerUnit;
 
     private void Awake()
