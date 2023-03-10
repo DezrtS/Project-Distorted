@@ -1,39 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public enum EntityTypes
+public enum EntityClass
 {
     PLAYER,
     ENEMY,
     ALLY,
-    OBJECT,
-    DEBUG
+    MELEEWEAPON,
+    RANGEDWEAPON,
+    OBJECT
 }
 
 public class Entity : MonoBehaviour
 {
-    private EntityTypes entityType;
+    [SerializeField] private EntityClass entityClass;
+    private string entityName;
+    private string entityDescription;
     private float maxHealth;
     private float health;
     [Range(0, 1)]
-    private float damageReduction;
+    private float damageReduction = 0;
 
-    public void SetupEntity(EntityTypes entityType, float maxHealth, float damageReduction)
+    public void SetupEntity(EntityClass entityClass, float maxHealth, float damageReduction)
     {
-        this.entityType = entityType;
+        this.entityClass = entityClass;
         this.maxHealth = maxHealth;
         health = maxHealth;
         this.damageReduction = damageReduction;
-        GameController.instance.AddEntityToWorld(this);
+        GameManager.instance.AddEntityToWorld(this);
     }
 
     void Update()
     {
-        
+
     }
 
-    public EntityTypes GetEntityType()
+    public EntityClass GetEntityClass()
     {
-        return entityType;
+        return entityClass;
     }
 
     public float GetMaxHealth()
@@ -53,8 +58,7 @@ public class Entity : MonoBehaviour
 
     public void SetDamageReduction(float damageReduction)
     {
-        damageReduction = 1 - Mathf.Clamp(damageReduction, 0, 1);
-        this.damageReduction = damageReduction;
+        this.damageReduction = Mathf.Clamp(damageReduction, 0, 1); ;
     }
 
     public void AddOrRemoveHealth(float amount)
@@ -62,9 +66,10 @@ public class Entity : MonoBehaviour
         if (amount > 0)
         {
             health = Mathf.Min(health + amount, maxHealth);
-        } else
+        }
+        else
         {
-            amount = amount * damageReduction;
+            amount = amount * (1 - damageReduction);
             health = Mathf.Max(health + amount, 0);
         }
 
@@ -73,6 +78,11 @@ public class Entity : MonoBehaviour
             Kill();
             Debug.Log(name + " has died");
         }
+    }
+
+    public virtual void OnHit()
+    {
+
     }
 
     public void Kill()

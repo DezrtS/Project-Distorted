@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using UnityEngine;
 
-public class Enemy : Entity
+public class Enemy : Creature
 {
     private EnemyType type;
     private WeaponType weapon;
@@ -10,20 +10,20 @@ public class Enemy : Entity
 
     private void Start()
     {
-        meleeWeapon.SetTarget(GameController.instance.GetClosestEntityOfTypes(new List<EntityTypes>() { EntityTypes.PLAYER }, this));
+        meleeWeapon.SetTarget(GameManager.instance.GetClosestEntityOfClass(new List<EntityClass>() { EntityClass.PLAYER }, this));
     }
 
     void Update()
     {
-        
+
     }
 
-    
+
     public void SetupEntity(EnemyType enemyType)
     {
         type = enemyType;
-        base.SetupEntity(EntityTypes.ENEMY, type.maxHealth, type.damageReduction);
+        base.SetupEntity(EntityClass.PLAYER, type.maxHealth, type.damageReduction);
         weapon = type.weapon;
-        meleeWeapon = GameController.instance.SpawnRandomMeleeWeapon(this);
+        meleeWeapon = GameManager.instance.SpawnRandomMeleeWeapon(this);
     }
 }

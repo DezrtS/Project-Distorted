@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 226283906436927643}
-  - component: {fileID: 1429935888859931698}
+  - component: {fileID: 4404107253619865435}
   m_Layer: 7
   m_Name: Enemy Visualizer
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 226283906685174165}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1429935888859931698
+--- !u!114 &4404107253619865435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 226283906436927644}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbb982e0860599d41b42403121c7fb0f, type: 3}
+  m_Script: {fileID: 11500000, guid: afe916d68cf6396429612310d51eed52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stayUpright: 1
@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 226283906685174165}
   - component: {fileID: 226283906685174166}
-  - component: {fileID: 2507260757973751092}
+  - component: {fileID: 3881417709737614943}
   m_Layer: 0
   m_Name: Basic Enemey
   m_TagString: Untagged
@@ -101,7 +101,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &2507260757973751092
+--- !u!114 &3881417709737614943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,9 +110,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 226283906685174184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49b59a8307be56042a15ade27007401d, type: 3}
+  m_Script: {fileID: 11500000, guid: b41360d1e5d842e4bbe7c85bbe0660f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityClass: 1
 --- !u!1 &226283907529117918
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +208,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 226283907529117918}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 6c05a154dbc33004bb69fe0a684b1477, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

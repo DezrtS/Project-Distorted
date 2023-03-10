@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 213d46164f204884195b05ccd6ae28bc, type: 3}
+  m_Name: Debug Enemy
+  m_EditorClassIdentifier: 
+  entityClass: 1
+  creatureName: Debug Enemy
+  creatureDescription: Its an enemy used for testing purposes
+  maxHealth: 25
+  damageReduction: 0
+  maxSpeed: 5
+  acceleration: 1
+  drag: 0.5
+  jumpPower: 6
+  weapon: {fileID: 0}

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeleeWeapon : Weapon
@@ -23,7 +22,6 @@ public class MeleeWeapon : Weapon
         rig = GetComponentInParent<Rigidbody2D>();
         rig.centerOfMass = Vector2.zero;
         meleeWeaponPivot = gameObject;
-        
     }
 
     public override void Aim()
@@ -81,6 +79,7 @@ public class MeleeWeapon : Weapon
             }
         }
     }
+    
 
     public Rigidbody2D GetRigidbody()
     {
@@ -118,18 +117,5 @@ public class MeleeWeapon : Weapon
     {
         StopAllCoroutines();
         StartCoroutine(DisableSwing());
-    }
-
-    public override void WeaponHit(Collision2D collision)
-    {
-        if (collision.collider.gameObject.tag == "Blade" && collision.otherCollider.gameObject.tag == "Blade")
-        {
-            //collision.collider.transform.parent.GetComponent<MeleeWeapon>().Parry();
-            //Parry();
-        } else if (isParrying)
-        {
-            StopAllCoroutines();
-            isMoving = false;
-        }
     }
 }
