@@ -21,8 +21,11 @@ public class Player : Creature
     private bool isGrounded = false;
     private bool canJump = true;
 
+    Explosive explosive;
+
     void Start()
     {
+        explosive = new Explosive(this, 1);
         rig = GetComponent<Rigidbody2D>();
         if (!overrideCreatureType)
         {
@@ -76,7 +79,7 @@ public class Player : Creature
             PickupItem();
             if (HasItem())
             {
-                if (GetHeldItem().GetEntityClass() == EntityClass.MELEEWEAPON || GetHeldItem().GetEntityClass() == EntityClass.RANGEDWEAPON)
+                if (GetHeldItem().GetEntitySubClass() == EntitySubClass.WEAPON)
                 {
                     GetHeldItem().GetComponent<Weapon>().OnlyTargetPosition(true);
                 }
@@ -117,6 +120,10 @@ public class Player : Creature
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.collider.gameObject.tag == "Blade")
+        {
+            explosive.Activate();
+        }
 
         if (collision.gameObject.tag == "Ground")
         {
@@ -140,7 +147,7 @@ public class Player : Creature
 
     public void SetupEntity()
     {
-        base.SetupEntity(EntityClass.PLAYER, 100, 0);
+        base.SetupEntity(EntityClass.CREATURE, EntitySubClass.PLAYER, 100, 0);
         //weapon = GameController.instance.SpawnRandomMeleeWeapon(this);
         //weapon.OnlyTargetPosition(true);
     }

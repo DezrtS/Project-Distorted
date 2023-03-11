@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f5e333d9feedc40824b18b03364c2d, type: 3}
   m_Name: Debug Sword
   m_EditorClassIdentifier: 
-  entityClass: 3
+  entityClass: 1
+  entitySubClass: 3
   itemName: Debug Sword
   itemDescription: Its a sword used for testing purposes
   weaponClass: 0

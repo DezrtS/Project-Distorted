@@ -4,17 +4,25 @@ using UnityEngine;
 
 public enum EntityClass
 {
+    CREATURE,
+    ITEM,
+    OBJECT
+}
+
+public enum EntitySubClass
+{
     PLAYER,
     ENEMY,
     ALLY,
-    MELEEWEAPON,
-    RANGEDWEAPON,
-    OBJECT
+    WEAPON,
+    INTERACTABLE,
+    OBSTACLE
 }
 
 public class Entity : MonoBehaviour
 {
     [SerializeField] private EntityClass entityClass;
+    [SerializeField] private EntitySubClass entitySubClass;
     private string entityName;
     private string entityDescription;
     private float maxHealth;
@@ -22,9 +30,10 @@ public class Entity : MonoBehaviour
     [Range(0, 1)]
     private float damageReduction = 0;
 
-    public void SetupEntity(EntityClass entityClass, float maxHealth, float damageReduction)
+    public void SetupEntity(EntityClass entityClass, EntitySubClass entitySubClass, float maxHealth, float damageReduction)
     {
         this.entityClass = entityClass;
+        this.entitySubClass = entitySubClass;
         this.maxHealth = maxHealth;
         health = maxHealth;
         this.damageReduction = damageReduction;
@@ -39,6 +48,11 @@ public class Entity : MonoBehaviour
     public EntityClass GetEntityClass()
     {
         return entityClass;
+    }
+
+    public EntitySubClass GetEntitySubClass()
+    {
+        return entitySubClass;
     }
 
     public float GetMaxHealth()

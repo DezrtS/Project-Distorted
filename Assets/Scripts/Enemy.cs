@@ -10,7 +10,7 @@ public class Enemy : Creature
 
     private void Start()
     {
-        meleeWeapon.SetTarget(GameManager.instance.GetClosestEntityOfClass(new List<EntityClass>() { EntityClass.PLAYER }, this));
+        meleeWeapon.SetTarget(GameManager.instance.GetClosestEntityOfSubClass(EntityClass.CREATURE, EntitySubClass.PLAYER, this));
     }
 
     void Update()
@@ -22,7 +22,7 @@ public class Enemy : Creature
     public void SetupEntity(EnemyType enemyType)
     {
         type = enemyType;
-        base.SetupEntity(EntityClass.PLAYER, type.maxHealth, type.damageReduction);
+        base.SetupEntity(EntityClass.CREATURE, EntitySubClass.ENEMY, type.maxHealth, type.damageReduction);
         weapon = type.weapon;
         meleeWeapon = GameManager.instance.SpawnRandomMeleeWeapon(this);
     }

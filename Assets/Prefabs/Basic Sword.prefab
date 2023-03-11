@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5389659045380170910}
   - component: {fileID: 5389659045380170896}
   m_Layer: 8
-  m_Name: Sword Hitbox
+  m_Name: Hitbox
   m_TagString: Blade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 5389659045630762865}
   - component: {fileID: 5389659045630762864}
   m_Layer: 8
-  m_Name: Pixel Sword
+  m_Name: Image
   m_TagString: Visualizer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -241,4 +241,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5912b91cf88746489931f1eb9e1114c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityClass: 3
+  entityClass: 1
+  entitySubClass: 3

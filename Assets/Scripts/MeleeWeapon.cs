@@ -6,7 +6,7 @@ public class MeleeWeapon : Weapon
 {
     private Rigidbody2D rig;
     private GameObject meleeWeaponPivot;
-    //private GameObject meleeWeaponImage;
+    private GameObject meleeWeaponImage;
     private MeleeWeaponType type;
     private float speed;
     private bool canBlock;
@@ -22,6 +22,7 @@ public class MeleeWeapon : Weapon
         rig = GetComponentInParent<Rigidbody2D>();
         rig.centerOfMass = Vector2.zero;
         meleeWeaponPivot = gameObject;
+        meleeWeaponImage = transform.Find("Image").gameObject;
     }
 
     public override void Aim()
@@ -67,11 +68,11 @@ public class MeleeWeapon : Weapon
                 {
                     if (direction > 0)
                     {
-                        //meleeWeaponImage.transform.localEulerAngles = new Vector3(0, 0, 0);
+                        meleeWeaponImage.transform.localEulerAngles = new Vector3(0, 0, 0);
                     }
                     else if (direction < 0)
                     {
-                        //meleeWeaponImage.transform.localEulerAngles = new Vector3(180, 0, 0);
+                        meleeWeaponImage.transform.localEulerAngles = new Vector3(180, 0, 0);
                     }
                 }
 

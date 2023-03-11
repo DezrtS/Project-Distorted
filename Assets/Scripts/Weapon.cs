@@ -51,6 +51,7 @@ public class Weapon : Item
         SetItemState(ItemState.HELD);
         this.damage = damage;
         this.knockback = knockback;
-        GameManager.instance.AddItemToWorld(this);
+        SetupEntity(EntityClass.ITEM, EntitySubClass.WEAPON, 100, 1);
+        GameManager.instance.AddEntityToWorld(this);
     }
 }

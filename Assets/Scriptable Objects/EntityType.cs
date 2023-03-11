@@ -5,4 +5,5 @@ using UnityEngine;
 public class EntityType : ScriptableObject
 {
     public EntityClass entityClass;
+    public EntitySubClass entitySubClass;
 }

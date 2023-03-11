@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject keybindsUI;
 
     [SerializeField] private List<Entity> entities = new List<Entity>();
-    [SerializeField] private List<Item> items = new List<Item>();
 
     private void Awake()
     {
@@ -61,14 +60,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddItemToWorld(Item item)
-    {
-        if (!items.Contains(item))
-        {
-            items.Add(item);
-        }
-    }
-
     /*
     public MeleeWeapon SpawnMeleeWeapon(Entity parent, MeleeWeaponType type)
     {
@@ -105,14 +96,27 @@ public class GameManager : MonoBehaviour
         return weapon;
     }
 
-    public Entity GetClosestEntityOfClass(List<EntityClass> entityClass, Entity originalEntity)
+    public List<Entity> GetAllEntitiesOfClass(EntityClass entityClass)
+    {
+        List<Entity> listOfEntities = new List<Entity>();
+        foreach (Entity entity in entities)
+        {
+            if (entity.GetEntityClass() == entityClass)
+            {
+                listOfEntities.Add(entity);
+            }
+        }
+        return listOfEntities;
+    }
+
+    public Entity GetClosestEntityOfClass(EntityClass entityClass, Entity originalEntity)
     {
         Vector3 position = originalEntity.transform.position;
         Entity closestEntity = null;
         float distance = int.MaxValue;
         foreach (Entity entity in entities)
         {
-            if (entityClass.Contains(entity.GetEntityClass()) && entity != originalEntity)
+            if (entity.GetEntityClass() == entityClass && entity != originalEntity)
             {
                 float entityDistance = (entity.transform.position - position).magnitude;
                 if (entityDistance < distance)
@@ -125,14 +129,36 @@ public class GameManager : MonoBehaviour
         return closestEntity;
     }
 
-    public Item GetClosestItemOfStates(List<ItemState> states, Entity originalEntity)
+    public Entity GetClosestEntityOfSubClass(EntityClass entityClass, EntitySubClass entitySubClass, Entity originalEntity)
     {
+        List<Entity> listOfEntities = GetAllEntitiesOfClass(entityClass);
+        Vector3 position = originalEntity.transform.position;
+        Entity closestEntity = null;
+        float distance = int.MaxValue;
+        foreach (Entity entity in listOfEntities)
+        {
+            if (entity.GetEntitySubClass() == entitySubClass && entity != originalEntity)
+            {
+                float entityDistance = (entity.transform.position - position).magnitude;
+                if (entityDistance < distance)
+                {
+                    distance = entityDistance;
+                    closestEntity = entity;
+                }
+            }
+        }
+        return closestEntity;
+    }
+
+    public Item GetClosestItemOfStates(EntitySubClass entitySubClass, List<ItemState> states, Entity originalEntity)
+    {
+        List<Entity> items = GetAllEntitiesOfClass(EntityClass.ITEM);
         Vector3 position = originalEntity.transform.position;
         Item closestItem = null;
         float distance = int.MaxValue;
         foreach (Item item in items)
         {
-            if (states.Contains(item.GetItemState()))
+            if (item.GetEntitySubClass() == entitySubClass && states.Contains(item.GetItemState()))
             {
                 float entityDistance = (item.transform.position - position).magnitude;
                 if (entityDistance < distance)

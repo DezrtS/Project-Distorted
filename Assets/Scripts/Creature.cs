@@ -28,7 +28,7 @@ public class Creature : Entity
             return false;
         } else
         {
-            item = GameManager.instance.GetClosestItemOfStates(new List<ItemState>() { ItemState.DROPPED }, this);
+            item = GameManager.instance.GetClosestItemOfStates(EntitySubClass.WEAPON, new List<ItemState>() { ItemState.DROPPED }, this);
             if (HasItem())
             {
                 item.PickedUp(this);
