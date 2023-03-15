@@ -14,6 +14,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private List<Entity> entities = new List<Entity>();
 
+    public List<Entity> Entities
+    {
+        get { return entities; }
+        private set { entities = value; }
+    }
+
     private void Awake()
     {
         if (instance == null)
