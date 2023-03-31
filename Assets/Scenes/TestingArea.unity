@@ -1137,6 +1137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: data.game
+  useEncriyption: 1
 --- !u!114 &6103449660304253127
 MonoBehaviour:
   m_ObjectHideFlags: 0
