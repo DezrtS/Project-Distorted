@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Creature
+public class Player : Creature, IDataPersistence
 {
     private Rigidbody2D rig;
 
@@ -34,7 +34,19 @@ public class Player : Creature
             jumpPower = playerType.jumpPower;
             drag = playerType.drag;
         }
-        SetupEntity();
+        //SetupEntity();
+    }
+
+    public void LoadData(GameData data)
+    {
+        SetupEntity(data);
+        transform.position = data.playerPosition;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.playerHealth = GetCurrentHealth();
+        data.playerPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -122,7 +134,7 @@ public class Player : Creature
     {
         if (collision.collider.gameObject.tag == "Blade")
         {
-            explosive.Activate();
+            //explosive.Activate();
         }
 
         if (collision.gameObject.tag == "Ground")
@@ -145,9 +157,9 @@ public class Player : Creature
         }
     }
 
-    public void SetupEntity()
+    public void SetupEntity(GameData data)
     {
-        base.SetupEntity(EntityClass.CREATURE, EntitySubClass.PLAYER, 100, 0);
+        base.SetupEntity(EntityClass.CREATURE, EntitySubClass.PLAYER, data.playerHealth, 0);
         //weapon = GameController.instance.SpawnRandomMeleeWeapon(this);
         //weapon.OnlyTargetPosition(true);
     }
