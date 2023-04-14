@@ -87,6 +87,8 @@ public class Entity : MonoBehaviour
             health = Mathf.Max(health + amount, 0);
         }
 
+        Debug.Log(name + " health is now " + health);
+
         if (health == 0)
         {
             Kill();
@@ -101,6 +103,6 @@ public class Entity : MonoBehaviour
 
     public void Kill()
     {
-
+        Destroy(gameObject);
     }
 }

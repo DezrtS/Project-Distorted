@@ -132,9 +132,9 @@ public class Player : Creature, IDataPersistence
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.gameObject.tag == "Blade")
+        if (collision.collider.gameObject.tag == "Enemy")
         {
-            //explosive.Activate();
+            EntityHelper.DamageEntity<Item, Enemy>(GetHeldItem(), collision.gameObject.GetComponent<Enemy>());
         }
 
         if (collision.gameObject.tag == "Ground")

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Blade
   - Visualizer
+  - Enemy
   layers:
   - Default
   - TransparentFX

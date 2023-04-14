@@ -45,6 +45,11 @@ public class Weapon : Item
         transform.position = entity.transform.position;
     }
 
+    public float GetDamage()
+    {
+        return damage;
+    }
+
     public void SetUpWeapon(WeaponClass weaponClass, float damage, float knockback)
     {
         this.weaponClass = weaponClass;

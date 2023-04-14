@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 226283906436927643}
   - component: {fileID: 4404107253619865435}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Enemy Visualizer
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 3881417709737614943}
   m_Layer: 0
   m_Name: Basic Enemey
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,9 +126,9 @@ GameObject:
   - component: {fileID: 226283907529117916}
   - component: {fileID: 226283907529117917}
   - component: {fileID: 226283907529117913}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Enemy Hitbox
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
